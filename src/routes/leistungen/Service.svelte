@@ -5,7 +5,7 @@
 
   export let service: any, activeServiceId: any, toggleService: any;
 
-  let collapsibleOpen = false;
+  let collapsibleOpen = true;
 
   let formatPrice = (price: any) => {
     return new Intl.NumberFormat("de-DE", {
@@ -15,6 +15,8 @@
       maximumFractionDigits: 2,
     }).format(price);
   };
+
+  console.log(service);
 </script>
 
 <div>
@@ -22,11 +24,11 @@
     <Collapsible.Root bind:open={collapsibleOpen}>
       <Collapsible.Trigger class="flex flex-row gap-2 items-center w-80">
         <div class="inline font-bold">{service.name}</div>
-        {#if collapsibleOpen}
-          <ChevronUp class="h-5 w-5 align-middle ml-auto" />
-        {:else}
-          <ChevronDown class="h-5 w-5 ml-auto" />
-        {/if}
+        <!-- {#if collapsibleOpen} -->
+        <!--   <ChevronUp class="h-5 w-5 align-middle ml-auto" /> -->
+        <!-- {:else} -->
+        <!--   <ChevronDown class="h-5 w-5 ml-auto" /> -->
+        <!-- {/if} -->
       </Collapsible.Trigger>
       <Collapsible.Content class="flex flex-col gap-1 ml-6 mt-3">
         {#each service.sub_services as subService, index}
@@ -44,7 +46,7 @@
     <div class="flex items-center">
       <div class="inline">{service.name}</div>
       {#if service.price !== null}
-        <div class="ml-4">{formatPrice(service.price)}</div>
+        <div class="font-bold ml-auto">{formatPrice(service.price)}</div>
       {/if}
     </div>
   {/if}

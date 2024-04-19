@@ -10,4 +10,7 @@
   {#each category.services as service}
     <Service {service} {activeServiceId} {toggleService} />
   {/each}
+  {#if category.services.length == 0}
+    <div class="text-center">No services available</div>
+  {/if}
 </div>
