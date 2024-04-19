@@ -79,7 +79,6 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="absolute inset-y-0 right-0 flex items-center space-x-4 font-medium" id="nav-links-container">
             <a id="homeLink" href="/" class="nav-item px-3 pt-2 pb-1 mb-1 text-sm font-bold" aria-current="page">Home</a>
-            <a href="/team" class="nav-item px-3 pt-2 pb-1 mb-1 text-sm">Team</a>
             <a href="/leistungen" class="nav-item px-3 pt-2 pb-1 mb-1 text-sm">Leistungen</a>
             <a href="/galerie" class="nav-item px-3 pt-2 pb-1 mb-1 text-sm">Galerie</a>
             <a href="/kontakt" class="nav-item px-3 pt-2 pb-1 mb-1 text-sm">Kontakt</a>
