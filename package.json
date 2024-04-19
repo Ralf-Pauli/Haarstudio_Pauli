@@ -24,12 +24,11 @@
     "tailwindcss": "^3.3.3",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "5.2.9"
   },
   "type": "module",
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
-    "@sveltejs/adapter-static": "^3.0.1",
     "bits-ui": "^0.5.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
