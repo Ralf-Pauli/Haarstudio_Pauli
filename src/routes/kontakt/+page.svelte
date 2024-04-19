@@ -3,20 +3,34 @@
   import { PUBLIC_GOOGLE_MAPS_API_KEY, PUBLIC_PLACE_ID, PUBLIC_STRAPI_HOST } from "$env/static/public";
   import placeholderImage from "$lib/assets/31.jpg";
   import { createLocalStorage } from "$lib/shared/stores/local-storage";
+  import { onMount } from "svelte";
+  import { Spinner } from 'flowbite-svelte';
 
   export let data: PageData;
   let contactPage = data.contact_page;
   let loadGoogleMap = createLocalStorage<boolean>("load-google-map", false);
-  let shouldLoad = false;
+  let shouldLoad: boolean | null = false;
+  let isLoading = true;
 
-  function handleAlwaysLoadChange(event) {
-    const shouldAlwaysLoad = event.target.checked;
-    loadGoogleMap.set(shouldAlwaysLoad);
+  onMount(() => {
+    shouldLoad = loadGoogleMap.get();
+    isLoading = false;
+  });
+
+  function handleAlwaysLoadChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    loadGoogleMap.set(target.checked);
   }
 </script>
 
+
+<!-- Map Section -->
 <div class="map-container w-3/5 h-2/5 block relative mx-auto">
-  {#if shouldLoad || loadGoogleMap.get()}
+  {#if isLoading}
+    <div class="w-full h-full bg-secondary inset-0 flex justify-center items-center">
+      <Spinner class="text-center fill-primary absolute"/>
+    </div>
+  {:else if loadGoogleMap.get() || shouldLoad}
     <iframe
       title="Google Map"
       allowfullscreen
@@ -50,39 +64,27 @@
   {/if}
 </div>
 
-
-<!-- Contact Information Section -->
-<div class="contact-section text-center">
-
-  <!-- Address Section -->
-  <div class="address-info">
-    <h3 class="font-bold">Adresse</h3>
-    <div>
-      <p>{contactPage.address.zip_code} {contactPage.address.city}</p>
-      <p>{contactPage.address.street} {contactPage.address.house_number}</p>
-    </div>
+<!-- Contact Information -->
+<div class="contact-info mb-8 text-center">
+  <h2 class="text-2xl font-bold mb-4">Kontaktinformationen</h2>
+  <!-- Address -->
+  <div class="address mb-4">
+    <p><strong>Adresse:</strong> {contactPage.address.street} {contactPage.address.house_number}
+      , {contactPage.address.zip_code} {contactPage.address.city}</p>
   </div>
-
-  <!-- Contact Details Section -->
-  <div class="contact-info">
-    <h3 class="font-bold">Kontakt</h3>
-    <div>
-      <div>Tel: <a href="tel:{contactPage.details.phone_number}">{contactPage.details.phone_number}</a></div>
-    </div>
+  <!-- Phone Number -->
+  <div class="phone mb-4">
+    <p><strong>Telefon:</strong> <a href="tel:{contactPage.details.phone_number}">{contactPage.details.phone_number}</a>
+    </p>
   </div>
-
-  <!-- Opening Hours Section -->
+  <!-- Opening Hours -->
   <div class="opening-hours">
-    <h3 class="font-bold">Öffnungszeiten</h3>
-    <div>
-      {#each contactPage.opening_hours as openingHour}
-        {#if openingHour.closed}
-          <div>{openingHour.day}: Geschlossen</div>
-        {:else}
-          <div>{openingHour.day}: {openingHour.begin.slice(0, 5)} - {openingHour.end.slice(0, 5)}</div>
-        {/if}
-      {/each}
-    </div>
+    <h3 class="text-xl font-semibold mb-2">Öffnungszeiten</h3>
+    {#each contactPage.opening_hours as openingHour}
+      <p>
+        {openingHour.days} : {openingHour.closed ? 'Geschlossen' : `${openingHour.begin.slice(0, 5)} - ${openingHour.end.slice(0, 5)}`}
+      </p>
+    {/each}
   </div>
 </div>
 
