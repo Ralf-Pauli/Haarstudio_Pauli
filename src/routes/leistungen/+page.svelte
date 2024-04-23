@@ -1,38 +1,63 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+  import Tabs from "./Tabs.svelte";
+  import Category from "./Category.svelte";
   import type { PageData } from "./$types";
-  import * as Tabs from "$components/ui/tabs";
-  import { Separator } from "$components/ui/separator";
-  import Service from "./Service.svelte";
+  import { browser } from "$app/environment";
 
   export let data: PageData;
   let { categories, tabsValueParam } = data;
+  let activeCategoryId: number | null = null;
+  let activeServiceId: number | null = null;
 
-  function hasServiceTypeChanged(categoryIndex: number, currentIndex: number) {
-    let currentService = categories[categoryIndex]?.services[currentIndex];
-    let previousService = categories[categoryIndex]?.services[currentIndex - 1];
+  onMount(() => {
+    (() => {
+      setActiveCategory(categories[0].id);
+    })();
 
-    return JSON.stringify(currentService?.type) !== JSON.stringify(previousService?.type);
+    if (tabsValueParam) {
+      const activeCategory = categories.find((category: any) => category.name === tabsValueParam);
+      if (activeCategory) {
+        setActiveCategory(activeCategory.id);
+      }
+    }
+  });
+
+  $: {
+    if (browser) {
+      const tabContainer = document.getElementById("tabcon");
+
+      if (tabContainer) {
+        tabContainer.childNodes.forEach((node: any) => {
+          if (node.classList === undefined) return;
+          if (getActiveCategory.name === node.textContent.trim()) {
+            node.classList.replace("border-transparent", "border-primary");
+          } else node.classList.replace("border-primary", "border-transparent");
+        });
+      }
+    }
   }
 
-  $: tabsValue = tabsValueParam || "Bleaching";
+  $: getActiveCategory = categories.find((c: any) => c.id === activeCategoryId) || categories[0];
+
+  function setActiveCategory(categoryId: number) {
+    activeCategoryId = categoryId;
+  }
+
+  function toggleService(serviceId: number) {
+    activeServiceId = activeServiceId === serviceId ? null : serviceId;
+  }
 </script>
 
-<div class="max-w-5xl mx-auto">
-  <Tabs.Root value={tabsValue} class="grid place-items-center">
-    <Tabs.List class="w-full">
-      {#each categories as category}
-        <Tabs.Trigger value={category.name}>{category.name}</Tabs.Trigger>
-      {/each}
-    </Tabs.List>
-    {#each categories as category, categoryIndex}
-      <Tabs.Content value={category.name} class="w-full">
-        {#each category?.services as service, serviceIndex}
-          {#if serviceIndex !== 0 && hasServiceTypeChanged(categoryIndex, serviceIndex)}
-            <Separator class="my-2 bg-primary" />
-          {/if}
-          <Service name={service.name} price={service.price} />
-        {/each}
-      </Tabs.Content>
-    {/each}
-  </Tabs.Root>
+<div class="max-w-5xl mx-auto mt-10 flex gap-20">
+  <Tabs {categories} {setActiveCategory} />
+  <div class="flex gap-3 pt-3 w-full">
+    {#key activeCategoryId}
+      {#if activeCategoryId === null}
+        <div class="m-auto w-16 h-16 border-8 border-dashed rounded-full animate-spin border-gray-500" />
+      {:else}
+        <Category category={getActiveCategory} {activeServiceId} {toggleService} />
+      {/if}
+    {/key}
+  </div>
 </div>
