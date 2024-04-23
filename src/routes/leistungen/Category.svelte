@@ -6,11 +6,12 @@
   export let toggleService: any; // Ensure toggleService is declared as a prop
 </script>
 
-<div class="flex flex-row max-w-2/5 flex-wrap gap-10">
-  {#each category.services as service}
-    <Service {service} {activeServiceId} {toggleService} />
-  {/each}
+<div class="flex w-full flex-wrap">
   {#if category.services.length == 0}
-    <div class="text-center">No services available</div>
+    <div class="pl-6 text-center">No services available</div>
+  {:else}
+    {#each category.services as service}
+      <Service {service} {activeServiceId} {toggleService} />
+    {/each}
   {/if}
 </div>

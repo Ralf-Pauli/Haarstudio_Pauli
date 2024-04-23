@@ -1,11 +1,7 @@
 <script lang="ts">
   import { Separator } from "$components/ui/separator";
-  import * as Collapsible from "$lib/components/ui/collapsible";
-  import { ChevronUp, ChevronDown } from "lucide-svelte";
 
   export let service: any, activeServiceId: any, toggleService: any;
-
-  let collapsibleOpen = true;
 
   let formatPrice = (price: any) => {
     return new Intl.NumberFormat("de-DE", {
@@ -15,33 +11,24 @@
       maximumFractionDigits: 2,
     }).format(price);
   };
-
-  console.log(service);
 </script>
 
-<div>
+<div class="w-1/2 px-6 pb-10">
   {#if service.sub_services.length > 0}
-    <Collapsible.Root bind:open={collapsibleOpen}>
-      <Collapsible.Trigger class="flex flex-row gap-2 items-center w-80">
-        <div class="inline font-bold">{service.name}</div>
-        <!-- {#if collapsibleOpen} -->
-        <!--   <ChevronUp class="h-5 w-5 align-middle ml-auto" /> -->
-        <!-- {:else} -->
-        <!--   <ChevronDown class="h-5 w-5 ml-auto" /> -->
-        <!-- {/if} -->
-      </Collapsible.Trigger>
-      <Collapsible.Content class="flex flex-col gap-1 ml-6 mt-3">
-        {#each service.sub_services as subService, index}
-          <div class="flex flex-row gap-8">
-            <div>{subService.name}</div>
-            <div class="font-bold ml-auto">{formatPrice(subService.price)}</div>
-          </div>
-          {#if index !== service.sub_services.length - 1}
-            <Separator class="bg-gray-700" />
-          {/if}
-        {/each}
-      </Collapsible.Content>
-    </Collapsible.Root>
+    <div class="flex gap-2 items-center">
+      <div class="inline font-bold border-b-primary pb-1 mb-2 underline decoration-primary decoration-2 underline-offset-4">{service.name}</div>
+    </div>
+    <div class="flex flex-col gap-1 ml-6 mt-3">
+      {#each service.sub_services as subService, index}
+        <div class="flex">
+          <div>{subService.name}</div>
+          <div class="font-bold ml-auto">{formatPrice(subService.price)}</div>
+        </div>
+        {#if index !== service.sub_services.length - 1}
+          <Separator class="bg-gray-700" />
+        {/if}
+      {/each}
+    </div>
   {:else}
     <div class="flex items-center">
       <div class="inline">{service.name}</div>
