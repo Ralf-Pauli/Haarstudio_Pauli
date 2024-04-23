@@ -30,7 +30,7 @@
       if (tabContainer) {
         tabContainer.childNodes.forEach((node: any) => {
           if (node.classList === undefined) return;
-          if (getActiveCategory().name === node.textContent.trim()) {
+          if (getActiveCategory.name === node.textContent.trim()) {
             node.classList.replace("border-transparent", "border-primary");
           } else node.classList.replace("border-primary", "border-transparent");
         });
@@ -38,9 +38,7 @@
     }
   }
 
-  function getActiveCategory() {
-    return categories.find((c: any) => c.id === activeCategoryId) || categories[0];
-  }
+  $: getActiveCategory = categories.find((c: any) => c.id === activeCategoryId) || categories[0];
 
   function setActiveCategory(categoryId: number) {
     activeCategoryId = categoryId;
@@ -58,7 +56,7 @@
       {#if activeCategoryId === null}
         <div class="m-auto w-16 h-16 border-8 border-dashed rounded-full animate-spin border-gray-500" />
       {:else}
-        <Category category={getActiveCategory()} {activeServiceId} {toggleService} />
+        <Category category={getActiveCategory} {activeServiceId} {toggleService} />
       {/if}
     {/key}
   </div>
