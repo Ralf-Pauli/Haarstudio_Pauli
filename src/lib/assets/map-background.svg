@@ -1,13 +1,11 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362 362" width="50px">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362 362" width="50px" height="50px">
 	<symbol id="image-8e5434c48385089abf9a9067d8f0a393e5c34f84">
 		<image
-			width="250px"
-			height="100%"
+			height="70%"
 			href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmZiZTZmIiBkPSJNOSAxM2gydi0yLjc1aDJWMTNoMlY4LjI1bC0zLTJsLTMgMnptMyA2LjM1cTMuMDUtMi44IDQuNTI1LTUuMDg3VDE4IDEwLjJxMC0yLjcyNS0xLjczNy00LjQ2MlQxMiA0VDcuNzM4IDUuNzM4VDYgMTAuMnEwIDEuNzc1IDEuNDc1IDQuMDYzVDEyIDE5LjM1TTEyIDIycS00LjAyNS0zLjQyNS02LjAxMi02LjM2MlQ0IDEwLjJxMC0zLjc1IDIuNDEzLTUuOTc1VDEyIDJ0NS41ODggMi4yMjVUMjAgMTAuMnEwIDIuNS0xLjk4NyA1LjQzOFQxMiAyMm0wLTEyIi8+PC9zdmc+"
 		/>
 	</symbol>
-	<rect x="0" y="0" width="362" height="362" fill="transparent"/>
-	<g transform="translate(10 10) rotate(0 171 171)">
-		<use href="#image-8e5434c48385089abf9a9067d8f0a393e5c34f84" width="342" height="342" opacity="1"/>
+	<g>
+		<use href="#image-8e5434c48385089abf9a9067d8f0a393e5c34f84" opacity="1"/>
 	</g>
 </svg>

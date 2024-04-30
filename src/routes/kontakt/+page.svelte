@@ -41,10 +41,10 @@
       style="border:0">
     </iframe>
   {:else}
-    <div class="w-full h-full object-cover bg-[url('$lib/assets/map-background.svg')] bg-repeat-space opacity-5" />
+    <div class="w-[102%] h-full object-cover bg-[url('$lib/assets/map-background.svg')] bg-repeat-space opacity-20 dark:opacity-5 bg-center" />
 
-    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#191719] bg-opacity-80 w-2/5">
-      <div class="text-center text-white p-4">
+    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#191719] bg-opacity-20 dark:bg-opacity-80 w-2/5">
+      <div class="text-center text-black dark:text-white p-4">
         <p>
           Mit dem Laden der Karte akzeptieren Sie die Datenschutzerklärung von Google.<br />
           <a href="https://policies.google.com/privacy" class="text-blue-300 hover:text-blue-500" rel="nofollow noopener noreferrer" target="_blank">Mehr erfahren</a>
