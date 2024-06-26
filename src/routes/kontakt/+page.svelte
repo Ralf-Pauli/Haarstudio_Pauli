@@ -47,49 +47,61 @@
       <div class="text-center text-black dark:text-white p-4">
         <p>
           Mit dem Laden der Karte akzeptieren Sie die Datenschutzerklärung von Google.<br />
-          <a href="https://policies.google.com/privacy" class="text-blue-300 hover:text-blue-500" rel="nofollow noopener noreferrer" target="_blank">Mehr erfahren</a>
+          <a
+            href="https://policies.google.com/privacy"
+            class="dark:text-blue-300 dark:hover:text-blue-500 text-blue-500 hover:text-blue-700"
+            rel="nofollow noopener noreferrer"
+            target="_blank">Mehr erfahren</a>
         </p>
         <p class="my-2">
           <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={loadMap}>Karte laden</button>
         </p>
         <div class="flex justify-center gap-2">
-          <Checkbox id="always-load-maps" bind:checked />
+          <Checkbox aria-label="Always load maps" id="always-load-maps" bind:checked />
           <label for="always-load-maps" class="inline-block align-top leading-5"> Google Maps immer erlauben </label>
         </div>
       </div>
     </div>
   {/if}
 </div>
-
-<div class="contact-info mb-8 text-center flex justify-around mt-10 max-w-5xl mx-auto">
+<div class="contact-info my-20 max-w-5xl mx-auto gap-4 flex justify-between">
   <div>
-    <h3 class="text-2xl font-semibold mb-2 underline decoration-primary decoration-2 underline-offset-4">Kontaktinformationen</h3>
-
-    <div class="">
-      <div class="mb-0.5 flex w-80">
-        <strong class="inline">Adresse:</strong>
-        <div class="ml-auto">
+    <h4 class="mb-3 text-xl font-semibold decoration-primary underline decoration-1 underline-offset-3">Kontakt</h4>
+    <div>
+      <div class="flex w-96 flex-col mb-1">
+        <p class="dark:text-zinc-400 text-zinc-600">Anschrift:</p>
+        <div>
           {contactPage.address.street}
-          {contactPage.address.house_number}
-          , {contactPage.address.zip_code}
+          {contactPage.address.house_number},
+          {contactPage.address.zip_code}
           {contactPage.address.city}
         </div>
       </div>
 
-      <div class="flex w-80">
-        <strong class="inline">Telefon:</strong>
-        <a class="ml-auto" href="tel:{contactPage.details.phone_number}">{contactPage.details.phone_number}</a>
+      <div class="flex w-96 flex-col mb-1">
+        <p class="dark:text-zinc-400 text-zinc-600">Telefon:</p>
+        <a href="tel:{contactPage.details.phone_number}">{contactPage.details.phone_number}</a>
       </div>
     </div>
   </div>
 
-  <div class="mb-0.5">
-    <h3 class="text-2xl font-semibold mb-2 underline decoration-primary decoration-2 underline-offset-4">Öffnungszeiten</h3>
-    {#each contactPage.opening_hours as openingHour}
-      <div class="flex gap-3">
-        <div class="font-bold inline">{openingHour.days}:</div>
-        <div class="ml-auto">{openingHour.closed ? "Geschlossen" : `${openingHour.begin.slice(0, 5)} - ${openingHour.end.slice(0, 5)}`}</div>
-      </div>
-    {/each}
+  <div>
+    <h4 class="mb-3 text-xl font-semibold underline decoration-primary decoration-1 underline-offset-3">Öffnungszeiten</h4>
+    <div class="flex flex-col gap-1">
+      {#each contactPage.opening_hours as openingHour}
+        <div class="w-96">
+          <div class="dark:text-zinc-400 text-zinc-600">{openingHour.days}:</div>
+          <div>{openingHour.closed ? "Geschlossen" : `${openingHour.begin.slice(0, 5)} - ${openingHour.end.slice(0, 5)}`}</div>
+        </div>
+      {/each}
+    </div>
+  </div>
+
+  <div>
+    <h4 class="mb-3 text-xl font-semibold underline decoration-primary decoration-1 underline-offset-3">Rechtliches</h4>
+    <div class="flex flex-col gap-1">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </div>
   </div>
 </div>
