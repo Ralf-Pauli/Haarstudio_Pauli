@@ -7,3 +7,9 @@
     <a href="/datenschutz">Datenschutz</a>
   </div>
 </footer>
+
+<style>
+  footer > div > a:hover {
+    text-decoration: underline;
+  }
+</style>
