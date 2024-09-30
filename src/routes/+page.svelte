@@ -1,19 +1,17 @@
 <script lang="ts">
   import { Button } from "$components/ui/button";
-  import * as HCard from "$components/ui/hcard";
-
   export let data: PageData;
   let { categories } = data;
-  const categoriesPerRow = 3;
-  const rows = Math.ceil(categories.length / categoriesPerRow);
 
-  const splitCategories = Array.from({ length: rows }, (_, i) => categories.slice(i * categoriesPerRow, i * categoriesPerRow + categoriesPerRow));
+  // Break categories into rows with a fixed number of columns per row
+  const columnsPerRow = 2; // Adjust this value for different numbers of columns
+  const categoryRows: any[] = [];
+  for (let i = 0; i < categories.length; i += columnsPerRow) {
+    categoryRows.push(categories.slice(i, i + columnsPerRow));
+  }
 </script>
 
-<div class="flex flex-col items-stretch justify-center gap-4 h-4/5 max-w-5xl mx-auto font-montserrat">
-  <!-- Hero Section -->
-  <!-- svelte-ignore a11y-img-redundant-alt -->
-  <!--  TODO shorter hero section? -->
+<div class="flex flex-col items-stretch justify-center gap-4 h-4/5 max-w-5xl mx-auto relative">
   <enhanced:img src="$lib/assets/hero.jpg" alt="Hero Image" class="object-cover rounded-xl absolute max-w-5xl opacity-10" />
   <div class="relative h-5/6 text-white">
     <div class="flex flex-col items-center justify-center h-full bg-opacity-10 p-4 rounded-xl relative">
@@ -24,18 +22,21 @@
   </div>
 </div>
 
-<!-- Services  -->
-<!-- TODO remove description? -->
-<div class="flex flex-col items-stretch justify-center gap-4 max-w-5xl mx-auto font-montserrat mb-10">
-  <h2 class="font-bold">Unsere Leistungen</h2>
-  {#each splitCategories as row}
-    <div class="flex justify-center gap-4">
-      {#each row as category}
-        <HCard.Root img="https://picsum.photos/150" href="/leistungen?tab={category.name}">
-          <HCard.Title>{category.name}</HCard.Title>
-          <HCard.Description>very important description</HCard.Description>
-        </HCard.Root>
-      {/each}
-    </div>
-  {/each}
+<!-- Services -->
+<div class="max-w-5xl mx-auto mb-10 p-4">
+  <h2 class="text-2xl font-bold text-center mb-8">Unsere Leistungen</h2>
+  <div class="space-y-6">
+    {#each categoryRows as row}
+      <div class="flex flex-wrap justify-center gap-6">
+        {#each row as category}
+          <a href="/leistungen?tab={category.name}" class="flex flex-col items-center text-center w-60">
+            <div class="flex flex-col items-center text-center w-60">
+              <div class="text-lg font-bold border-b-primary pb-1 underline decoration-primary decoration-2 underline-offset-4">{category.name}</div>
+              <img class="w-full h-40 object-cover rounded-md mt-2" src="https://picsum.photos/150" alt="{category.name}" />
+            </div>
+          </a>
+        {/each}
+      </div>
+    {/each}
+  </div>
 </div>
