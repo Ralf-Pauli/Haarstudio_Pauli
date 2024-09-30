@@ -56,6 +56,7 @@
       {#if activeCategoryId === null}
         <div class="m-auto w-8 h-8 border-4 border-dashed rounded-full animate-spin border-t-primary" />
       {:else}
+        <!-- TODO: navigation on directional keypress -->
         <Category category={getActiveCategory} {activeServiceId} {toggleService} />
       {/if}
     {/key}

@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { Separator } from "$components/ui/separator";
-
-  export let service: any, activeServiceId: any, toggleService: any;
+  export let service: any;
 
   let formatPrice = (price: any) => {
     return new Intl.NumberFormat("de-DE", {
@@ -20,12 +18,16 @@
     </div>
     <div class="flex flex-col gap-1 ml-6 mt-3">
       {#each service.sub_services as subService, index}
-        <div class="flex">
-          <div>{subService.name}</div>
-          <div class="font-bold ml-auto">{formatPrice(subService.price)}</div>
-        </div>
-        {#if index !== service.sub_services.length - 1}
-          <Separator class="bg-gray-700" />
+        {#if index % 2 === 1 && index > 0}
+          <div class="flex bg-zinc-800 p-2 rounded-md">
+            <div>{subService.name}</div>
+            <div class="font-bold ml-auto">{formatPrice(subService.price)}</div>
+          </div>
+        {:else}
+          <div class="flex p-2">
+            <div>{subService.name}</div>
+            <div class="font-bold ml-auto">{formatPrice(subService.price)}</div>
+          </div>
         {/if}
       {/each}
     </div>
