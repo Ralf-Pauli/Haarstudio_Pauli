@@ -5,11 +5,10 @@
   import Footer from "$components/footer/Footer.svelte";
 
   export let data: LayoutData;
-  const footer = data?.footer;
 </script>
 
 <div class="h-screen px-3">
   <Navbar />
   <slot />
-  <Footer {footer} />
+  <Footer />
 </div>

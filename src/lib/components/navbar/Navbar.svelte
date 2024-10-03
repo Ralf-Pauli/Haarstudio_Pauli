@@ -72,8 +72,8 @@
             document.getElementById("homeLink")?.click();
           }}>
           <div class="flex flex-shrink-0 items-center cursor-pointer">
-            <img class="block h-9 w-auto lg:block" src={logoImage} alt="Logo" />
-            <img class="block h-9 w-auto lg:block" src={logoNameImage} alt="Logo Name" />
+            <enhanced:img class="block h-9 w-auto lg:block" src="$lib/assets/logo.png" alt="Logo" />
+            <enhanced:img class="block h-9 w-auto lg:block" src="$lib/assets/logoName.png" alt="Logo Name" />
           </div>
         </button>
         <div class="hidden sm:ml-6 sm:block">
@@ -94,8 +94,6 @@
     <div class="space-y-1 px-2 pb-3 pt-2 flex flex-col gap-1">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
       <a href="/" class="bg-[#573e10] text-white px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-      <Separator class="bg-primary" />
-      <a href="/team" class="text-gray-300 hover:bg-[#BF8D30] hover:text-white px-3 py-2 text-sm font-medium">Team</a>
       <Separator class="bg-primary" />
       <a href="/leistungen" class="text-gray-300 hover:bg-[#BF8D30] hover:text-white px-3 py-2 text-sm font-medium">Leistungen</a>
       <Separator class="bg-primary" />
