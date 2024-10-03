@@ -11,16 +11,18 @@
   }
 </script>
 
-<div class="flex flex-col items-stretch justify-center gap-4 h-4/5 max-w-5xl mx-auto relative">
-  <enhanced:img src="$lib/assets/hero.jpg" alt="Hero Image" class="object-cover rounded-xl absolute max-w-5xl opacity-10" />
-  <div class="relative h-5/6 text-white">
-    <div class="flex flex-col items-center justify-center h-full bg-opacity-10 p-4 rounded-xl relative">
-      <h1 class="text-4xl font-bold inline border-b-primary mb-2 underline decoration-primary decoration-4 underline-offset-4">Willkommen bei Haarstudio Pauli</h1>
-      <p class="text-xl my-1">Erleben Sie Exzellenz und Präzision bei jedem Termin.</p>
-      <Button href="/booking" class="text-base mt-4 bg-primary text-black font-bold p-2 px-4 rounded-md">Termin Buchen</Button>
+<section class="relative my-14 flex justify-center items-center">
+  <div class="w-4/5 h-[40rem] max-h-screen max-w-5xl mx-auto relative">
+    <enhanced:img src="$lib/assets/hero.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl absolute opacity-10" />
+    <div class="relative h-full text-white">
+      <div class="flex flex-col items-center justify-center h-full bg-opacity-10 p-4 rounded-xl relative">
+        <h1 class="text-4xl font-bold inline border-b-primary mb-2 underline decoration-primary decoration-4 underline-offset-4">Willkommen bei Haarstudio Pauli</h1>
+        <p class="text-xl my-1">Erleben Sie Exzellenz und Präzision bei jedem Termin.</p>
+        <Button href="/booking" class="text-base mt-4 bg-primary text-black font-bold p-2 px-4 rounded-md">Termin Buchen</Button>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Services -->
 <div class="max-w-5xl mx-auto mb-10 p-4">
