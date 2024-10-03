@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "../../../.svelte-kit/types/src/routes/$types.js";
-  import { PUBLIC_GOOGLE_MAPS_API_KEY, PUBLIC_PLACE_ID } from "$env/static/public";
+  import { PUBLIC_GOOGLE_MAPS_API_KEY, PUBLIC_PLACE_ID, PUBLIC_STRAPI_HOST } from "$env/static/public";
   import { createLocalStorage } from "$lib/shared/stores/local-storage";
   import { onMount } from "svelte";
   import { Checkbox } from "$lib/components/ui/checkbox";
@@ -64,11 +64,12 @@
     </div>
   {/if}
 </div>
+
 <div class="contact-info my-20 max-w-5xl mx-auto gap-4 flex justify-between">
   <div>
     <h4 class="mb-3 text-xl font-semibold decoration-primary underline decoration-1 underline-offset-3">Kontakt</h4>
     <div>
-      <div class="flex w-96 flex-col mb-1">
+      <div class="flex  flex-col mb-1">
         <p class="dark:text-zinc-400 text-zinc-600">Anschrift:</p>
         <div>
           {contactPage.address.street}
@@ -77,8 +78,7 @@
           {contactPage.address.city}
         </div>
       </div>
-
-      <div class="flex w-96 flex-col mb-1">
+      <div class="flex  flex-col mb-1">
         <p class="dark:text-zinc-400 text-zinc-600">Telefon:</p>
         <a href="tel:{contactPage.details.phone_number}">{contactPage.details.phone_number}</a>
       </div>
@@ -86,10 +86,23 @@
   </div>
 
   <div>
+    <h4 class="mb-3 text-xl font-semibold underline decoration-primary decoration-1 underline-offset-3">Social Media</h4>
+    <div class="flex flex-col gap-2">
+      {#each contactPage.social_media as socialMedia}
+        <div class="">
+          <a href="{socialMedia.url}" target="_blank">
+            <img src="{PUBLIC_STRAPI_HOST + socialMedia.icon.formats.small.url}" alt="{socialMedia.name}" class="h-[1em] inline mb-1 mr-[8px]">{socialMedia.name}
+          </a>
+        </div>
+      {/each}
+    </div>
+  </div>
+
+  <div>
     <h4 class="mb-3 text-xl font-semibold underline decoration-primary decoration-1 underline-offset-3">Öffnungszeiten</h4>
     <div class="flex flex-col gap-1">
       {#each contactPage.opening_hours as openingHour}
-        <div class="w-96">
+        <div class="">
           <div class="dark:text-zinc-400 text-zinc-600">{openingHour.days}:</div>
           <div>{openingHour.closed ? "Geschlossen" : `${openingHour.begin.slice(0, 5)} - ${openingHour.end.slice(0, 5)}`}</div>
         </div>
