@@ -7,6 +7,16 @@ export function createLocalStorage<T>(
   onChange?: (value: T) => void,
 ): Writable<T> & { set: (value: T) => void; get: () => T | null; update: (updater: Updater<T>) => void } {
   const storedValue = browser ? window.localStorage.getItem(key) : null;
+
+  if (storedValue) {
+    try {
+      JSON.parse(storedValue);
+    } catch (error) {
+      if (browser) window.localStorage.removeItem(key);
+      window.location.reload();
+    }
+  }
+
   const store = writable<T>(storedValue ? JSON.parse(storedValue) : initialValue);
 
   function update(updater: Updater<T>): void {
