@@ -26,7 +26,7 @@
 </script>
 
 <!-- Map Section -->
-<div class="map-container md:max-w-5xl h-2/6 mt-10 block relative mx-auto">
+<div class="map-container w-screen md:max-w-5xl h-2/6 mt-10 block relative mx-auto">
   {#if isLoading}
     <div class="w-full h-full inset-0 flex justify-center items-center">
       <div class="m-auto w-8 h-8 border-4 border-dashed rounded-full animate-spin border-t-primary" />
@@ -41,9 +41,9 @@
       style="border:0">
     </iframe>
   {:else}
-    <div class="w-[102%] h-full object-cover bg-[url('$lib/assets/map-background.svg')] bg-repeat-space opacity-20 dark:opacity-5 bg-center" />
+    <div class="w-[100%] h-full object-cover bg-[url('$lib/assets/map-background.svg')] bg-repeat-space opacity-20 dark:opacity-5 bg-center" />
 
-    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#191719] bg-opacity-20 dark:bg-opacity-80 w-2/5">
+    <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#191719] bg-opacity-20 dark:bg-opacity-80 w-full sm:w-2/5">
       <div class="text-center text-black dark:text-white p-4">
         <p>
           Mit dem Laden der Karte akzeptieren Sie die Datenschutzerklärung von Google.<br />
@@ -65,11 +65,11 @@
   {/if}
 </div>
 
-<div class="contact-info my-20 max-w-5xl mx-auto gap-4 flex justify-between">
+<div class="contact-info sm:my-20 max-w-5xl mx-auto gap-4 flex flex-col sm:flex-row justify-between">
   <div>
     <h4 class="mb-3 text-xl font-semibold decoration-primary underline decoration-1 underline-offset-3">Kontakt</h4>
     <div>
-      <div class="flex  flex-col mb-1">
+      <div class="flex flex-col mb-1">
         <p class="dark:text-zinc-400 text-zinc-600">Anschrift:</p>
         <div>
           {contactPage.address.street}
@@ -78,7 +78,7 @@
           {contactPage.address.city}
         </div>
       </div>
-      <div class="flex  flex-col mb-1">
+      <div class="flex flex-col mb-1">
         <p class="dark:text-zinc-400 text-zinc-600">Telefon:</p>
         <a href="tel:{contactPage.details.phone_number}">{contactPage.details.phone_number}</a>
       </div>
@@ -90,8 +90,8 @@
     <div class="flex flex-col gap-2">
       {#each contactPage.social_media as socialMedia}
         <div class="">
-          <a href="{socialMedia.url}" target="_blank">
-            <img src="{PUBLIC_STRAPI_HOST + socialMedia.icon.formats.small.url}" alt="{socialMedia.name}" class="h-[1em] inline mb-1 mr-[8px]">{socialMedia.name}
+          <a href={socialMedia.url} target="_blank">
+            <img src={PUBLIC_STRAPI_HOST + socialMedia.icon.formats.small.url} alt={socialMedia.name} class="h-[1em] inline mb-1 mr-[8px]" />{socialMedia.name}
           </a>
         </div>
       {/each}
@@ -118,3 +118,4 @@
     </div>
   </div>
 </div>
+

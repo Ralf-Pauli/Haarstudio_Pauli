@@ -10,7 +10,7 @@
   let socialMediaPromise = getSocialMedia();
 </script>
 
-<footer class="w-full grid grid-cols-3 mx-auto pt-4 inset-x-0 h-16 max-w-5xl sticky top-[100vh] text-sm">
+<footer class="w-full grid sm:grid-cols-3 mx-auto pt-4 inset-x-0 h-16 max-w-5xl sticky top-[100vh] text-sm">
   <!--  TODO: use correct name -->
   <p class="flex-shrink-0">&copy; {new Date().getFullYear()} Haarstudio Pauli</p>
   <div class="mx-auto">
