@@ -4,6 +4,8 @@
   import Navbar from "$components/navbar/Navbar.svelte";
   import Footer from "$components/footer/Footer.svelte";
 
+  import ScrollToTop from "$components/ScrollToTop.svelte";
+
   export let data: LayoutData;
 </script>
 
@@ -11,4 +13,5 @@
   <Navbar />
   <slot />
   <Footer />
+  <ScrollToTop />
 </div>
