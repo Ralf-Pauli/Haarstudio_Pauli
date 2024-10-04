@@ -2,10 +2,17 @@
   import "../app.postcss";
   import Navbar from "$components/navbar/Navbar.svelte";
   import Footer from "$components/footer/Footer.svelte";
+  let isMobileMenuOpen = false;
+
+  function toggleMobileMenu() {
+    isMobileMenuOpen = !isMobileMenuOpen;
+  }
 </script>
 
 <div class="h-screen sm:px-3">
-  <Navbar />
-  <slot />
+  <Navbar {isMobileMenuOpen} {toggleMobileMenu} />
+  <main class:overflow-hidden={isMobileMenuOpen} class:h-screen={isMobileMenuOpen} class="pt-5 sm:pt-10">
+    <slot />
+  </main>
   <Footer />
 </div>
