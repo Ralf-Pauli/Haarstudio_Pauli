@@ -6,8 +6,7 @@
   export let data: PageData;
   let { categories } = data;
 
-  // Break categories into rows with a fixed number of columns per row
-  const columnsPerRow = 2; // Adjust this value for different numbers of columns
+  const columnsPerRow = 3;
   const categoryRows: any[] = [];
   for (let i = 0; i < categories.length; i += columnsPerRow) {
     categoryRows.push(categories.slice(i, i + columnsPerRow));

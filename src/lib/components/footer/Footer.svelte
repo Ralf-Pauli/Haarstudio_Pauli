@@ -22,7 +22,7 @@
       {/each}
     {/await}
   </div>
-  <div class="md:ml-auto">
+  <div class="md:ml-auto pb-3">
     <a href="/impressum">Impressum</a>
     <span>|</span>
     <a href="/datenschutz">Datenschutzerklärung</a>
