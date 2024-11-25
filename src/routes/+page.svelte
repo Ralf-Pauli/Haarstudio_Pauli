@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { PageData } from "./$types";
-
+  import BookingWidget from "$components/BookingWidget.svelte";
   import { Button } from "$components/ui/button";
 
   export let data: PageData;
@@ -22,7 +22,7 @@
         <div class="flex flex-col items-center justify-center h-full bg-opacity-10 p-4 rounded-xl relative">
           <h1 class="text-4xl font-bold inline border-b-primary mb-2 underline decoration-primary decoration-4 underline-offset-4">Willkommen bei Haarstudio Pauli</h1>
           <p class="text-xl my-1">Erleben Sie Exzellenz und Präzision bei jedem Termin.</p>
-          <Button href="/booking" class="text-base mt-4 bg-primary text-black font-bold p-2 px-4 rounded-md">Termin Buchen</Button>
+          <Button target="_blank" href="https://connect.shore.com/bookings/haarstudio-pauli/services?locale=de" class="text-base mt-4 bg-primary text-black font-bold p-2 px-4 rounded-md">Termin Buchen</Button>
         </div>
       </div>
     </div>
@@ -46,5 +46,7 @@
       {/each}
     </div>
   </div>
+
+  <BookingWidget />
 </div>
 
