@@ -17,11 +17,11 @@
   };
 </script>
 
-<div class="overflow-hidden flex items-center">
+<div class="overflow-hidden md:overflow-visible flex items-center md:items-start">
   <Button class="md:hidden p-2 hover:bg-transparent" size="icon" variant="ghost" on:click={scrollLeft}>
     <ChevronLeft />
   </Button>
-  <div bind:this={buttonRow} id="tabcon" class="flex md:flex-col items-start overflow-x-auto scroll-smooth">
+  <div bind:this={buttonRow} id="tabcon" class="flex md:flex-col items-start overflow-x-auto md:overflow-x-visible scroll-smooth">
     {#each categories as category}
       <Tab {category} {setActiveCategory} />
     {/each}
