@@ -15,13 +15,17 @@
 
 <div class="flex flex-col gap-5">
   <section class="relative flex justify-center items-center">
-    <div class="w-4/5 h-[40rem] max-h-screen max-w-5xl mx-auto relative">
+    <div class="w-11/12 md:w-4/5 h-[24rem] md:h-[40rem] max-h-screen max-w-5xl mx-auto relative">
       <enhanced:img src="$lib/assets/hero.jpg" alt="Hero Image" class="w-full h-full object-cover rounded-xl absolute opacity-10" />
       <div class="relative h-full text-white">
         <div class="flex flex-col items-center justify-center h-full bg-opacity-10 p-4 rounded-xl relative">
-          <h1 class="text-4xl font-bold inline border-b-primary mb-2 underline decoration-primary decoration-4 underline-offset-4">Willkommen bei Haarstudio Pauli</h1>
-          <p class="text-xl my-1">Erleben Sie Exzellenz und Präzision bei jedem Termin.</p>
-          <Button target="_blank" href="https://connect.shore.com/bookings/haarstudio-pauli/services?locale=de" class="text-base mt-4 bg-primary text-black font-bold p-2 px-4 rounded-md">Termin Buchen</Button>
+          <h1 class="text-2xl md:text-4xl font-bold inline border-b-primary mb-2 underline decoration-primary decoration-4 underline-offset-4 text-center">
+            Willkommen bei Haarstudio Pauli
+          </h1>
+          <p class="text-base md:text-xl my-1 text-center">Erleben Sie Exzellenz und Präzision bei jedem Termin.</p>
+          <Button target="_blank" href="https://connect.shore.com/bookings/haarstudio-pauli/services?locale=de" class="text-sm md:text-base mt-4 bg-primary text-black font-bold p-2 px-4 rounded-md">
+            Termin Buchen
+          </Button>
         </div>
       </div>
     </div>
