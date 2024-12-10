@@ -18,7 +18,7 @@
 </script>
 
 <div class="overflow-hidden flex items-center">
-  <Button class="md:hidden p-2" size="icon" variant="ghost" on:click={scrollLeft}>
+  <Button class="md:hidden p-2 hover:bg-transparent" size="icon" variant="ghost" on:click={scrollLeft}>
     <ChevronLeft />
   </Button>
   <div bind:this={buttonRow} id="tabcon" class="flex md:flex-col items-start overflow-x-auto scroll-smooth">
@@ -26,7 +26,7 @@
       <Tab {category} {setActiveCategory} />
     {/each}
   </div>
-  <Button class="md:hidden p-2" size="icon" variant="ghost" on:click={scrollRight}>
+  <Button class="md:hidden p-2 hover:bg-transparent" size="icon" variant="ghost" on:click={scrollRight}>
     <ChevronRight />
   </Button>
 </div>
