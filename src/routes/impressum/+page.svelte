@@ -7,6 +7,6 @@
   let imprintMarkdown = data.imprint;
 </script>
 
-<article class="prose prose-stone dark:prose-invert max-w-5xl mx-auto mt-10">
+<article class="prose prose-stone dark:prose-invert max-w-5xl mx-auto">
   {@html marked.parse(imprintMarkdown)}
 </article>

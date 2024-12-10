@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import Tabs from "./Tabs.svelte";
-  import Category from "./Category.svelte";
   import type { PageData } from "./$types";
   import { browser } from "$app/environment";
+  import { onMount } from "svelte";
+
+  import Tabs from "./Tabs.svelte";
+  import Category from "./Category.svelte";
 
   export let data: PageData;
   let { categories, tabsValueParam } = data;
@@ -49,7 +50,7 @@
   }
 </script>
 
-<div class="max-w-5xl mx-auto mt-10 flex gap-20">
+<div class="max-w-5xl mx-auto flex gap-20">
   <Tabs {categories} {setActiveCategory} />
   <div class="flex gap-3 pt-3 w-full">
     {#key activeCategoryId}

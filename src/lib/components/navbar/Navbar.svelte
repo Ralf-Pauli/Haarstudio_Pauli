@@ -1,24 +1,17 @@
 <script lang="ts">
-  import logoImage from "$lib/assets/logo.png";
-  import logoNameImage from "$lib/assets/logoName.png";
   import { createLocalStorage } from "$lib/shared/stores/local-storage";
-  import ThemeToggle from "$components/ThemeToggle.svelte";
-  import { Separator } from "$components/ui/separator";
-  import { page } from "$app/stores";
+
   import { afterNavigate } from "$app/navigation";
+  import { page } from "$app/stores";
+
+  import ThemeToggle from "$components/ThemeToggle.svelte";
+
+  export let isMobileMenuOpen = false;
+  export let toggleMobileMenu = () => {};
 
   $: pathName = $page.url.pathname;
 
-  const navActive = createLocalStorage("active-nav");
-
-  function toggleMobileMenu() {
-    const buttonOpen = document.getElementById("mobile-menu-button-open");
-    const buttonClose = document.getElementById("mobile-menu-button-close");
-    buttonOpen?.classList.toggle("hidden");
-    buttonClose?.classList.toggle("hidden");
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu?.classList.toggle("hidden");
-  }
+  const navActive = createLocalStorage("active-nav", "/");
 
   function updateActiveNavItem() {
     // set active nav into localstorage
@@ -32,7 +25,14 @@
     }
   }
 
-  afterNavigate(function () {
+  const menuItems = [
+    { name: "Hauptseite", url: "/" },
+    { name: "Leistungen", url: "/leistungen" },
+    { name: "Galerie", url: "/galerie" },
+    { name: "Kontakt", url: "/kontakt" },
+  ];
+
+  afterNavigate(() => {
     updateActiveNavItem();
   });
 </script>
@@ -44,20 +44,13 @@
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
         <button
-          id="mobile-menu-button-open"
-          type="button"
           on:click={toggleMobileMenu}
           class="inline-flex items-center justify-center rounded-md p-2 text-text hover:text-white focus:outline-none ring-0"
           aria-controls="mobile-menu"
           aria-expanded="false">
           <span class="sr-only">Open main menu</span>
-          <!-- Icon when menu is closed. Menu open: "hidden", Menu closed: "block" -->
           <svg class="block h-6 w-6 z-20" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <!-- Icon when menu is open. Menu open: "block", Menu closed: "hidden" -->
-          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
@@ -89,19 +82,27 @@
     </div>
   </div>
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden hidden z-10 absolute w-full h-full top-0 pt-12" id="mobile-menu">
-    <div class="space-y-1 px-2 pb-3 pt-2 flex flex-col gap-1">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/" class="bg-[#573e10] text-white px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-      <Separator class="bg-primary" />
-      <a href="/leistungen" class="text-gray-300 hover:bg-[#BF8D30] hover:text-white px-3 py-2 text-sm font-medium">Leistungen</a>
-      <Separator class="bg-primary" />
-      <a href="/galerie" class="text-gray-300 hover:bg-[#BF8D30] hover:text-white px-3 py-2 text-sm font-medium">Galerie</a>
-      <Separator class="bg-primary" />
-      <a href="/kontakt" class="text-gray-300 hover:bg-[#BF8D30] hover:text-white px-3 py-2 text-sm font-medium">Kontakt</a>
+  <!-- Mobile Menu-->
+  {#if isMobileMenuOpen}
+    <div class="fixed inset-0 bg-background text-white flex flex-col items-center justify-center z-50 h-screen">
+      <button class="absolute top-5 left-2 text-2xl" on:click={toggleMobileMenu}>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <nav>
+        <ul class="text-center">
+          {#each menuItems as item}
+            <li class="mb-6">
+              <a href={item.url} on:click={toggleMobileMenu} class="text-2xl hover:text-gray-300">
+                {item.name}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </nav>
     </div>
-  </div>
+  {/if}
 </nav>
 
 <style>
