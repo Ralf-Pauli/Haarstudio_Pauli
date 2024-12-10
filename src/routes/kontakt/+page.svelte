@@ -31,11 +31,11 @@
 
   <div>
     <h4 class="mb-3 text-xl font-semibold underline decoration-primary decoration-1 underline-offset-3">Social Media</h4>
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col items-center gap-2">
       {#each contactPage.social_media as socialMedia}
         <div>
-          <a href={socialMedia.url} target="_blank" class="">
-            <img src={PUBLIC_STRAPI_HOST + socialMedia.icon.formats.small.url} alt={socialMedia.name} class="h-4 inline mb-1 mr-2" />
+          <a href={socialMedia.url} target="_blank" class="items-center flex">
+            <img src={PUBLIC_STRAPI_HOST + socialMedia.icon.formats.small.url} alt={socialMedia.name} class="h-4 inline mr-2" />
             <span class="hover:underline hover:decoration-primary"> {socialMedia.name}</span>
           </a>
         </div>
