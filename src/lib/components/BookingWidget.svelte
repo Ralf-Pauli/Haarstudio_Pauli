@@ -13,22 +13,14 @@
 
   onMount(() => {
     window.shoreBookingSettings = settings;
+
     const script = document.createElement("script");
-    script.src = "https://connect.shore.com/widget/booking.js";
+    script.src = `https://connect.shore.com/widget/booking.js`;
+    script.async = true;
     document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
   });
 </script>
-
-<style>
-    :global(.SBW-button > svg) {
-        display: initial !important;
-        vertical-align: baseline !important;
-        margin-bottom: -3px;
-        margin-right: 10px;
-    }
-
-    :global(img, svg, video, canvas, audio, iframe, embed, object) {
-        display: initial;
-        vertical-align: baseline;
-    }
-</style>
