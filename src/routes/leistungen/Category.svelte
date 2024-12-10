@@ -18,7 +18,7 @@
   };
 </script>
 
-<div class="flex w-full flex-wrap">
+<div class="flex flex-col md:flex-row w-full flex-wrap">
   {#if category.services.length == 0}
     <div class="pl-6 text-center">No services available</div>
   {:else if serviceWithSubServices.length > 0}
@@ -26,7 +26,7 @@
       <Service {service} {activeServiceId} {toggleService} />
     {/each}
     {#if otherServices.length > 0}
-      <div class="w-1/2 px-6 pb-10">
+      <div class="md:w-1/2 px-6 pb-10">
         <div class="flex gap-2 items-center">
           <div class="inline font-bold border-b-primary pb-1 mb-2 underline decoration-primary decoration-2 underline-offset-4">Sonstige Leistungen</div>
         </div>
@@ -48,7 +48,7 @@
       </div>
     {/if}
   {:else}
-    <div class="w-1/2 px-6 pb-10">
+    <div class="md:w-1/2 px-6 pb-10">
       <div class="flex gap-2 items-center">
         <div class="inline font-bold border-b-primary pb-1 mb-2 underline decoration-primary decoration-2 underline-offset-4">{category.name}</div>
       </div>

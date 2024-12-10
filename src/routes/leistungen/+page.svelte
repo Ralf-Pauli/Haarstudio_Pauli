@@ -50,7 +50,7 @@
   }
 </script>
 
-<div class="max-w-5xl mx-auto flex gap-20">
+<div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-5 md:gap-20">
   <Tabs {categories} {setActiveCategory} />
   <div class="flex gap-3 pt-3 w-full">
     {#key activeCategoryId}
