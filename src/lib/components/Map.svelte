@@ -22,7 +22,7 @@
   }
 </script>
 
-<div class="w-screen md:max-w-5xl h-[50vh] block mx-auto relative">
+<div class="w-screen md:max-w-5xl h-[50vh] block mx-auto relative p-3">
   {#if isLoading}
     <div class="w-full h-full inset-0 flex justify-center items-center">
       <div class="m-auto w-8 h-8 border-4 border-dashed rounded-full animate-spin border-t-primary" />
