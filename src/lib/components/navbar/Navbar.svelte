@@ -32,6 +32,8 @@
     { name: "Kontakt", url: "/kontakt" },
   ];
 
+  const mobileMenuItems = [...menuItems, { name: "Impressum", url: "/impressum" }, { name: "Datenschutz", url: "/datenschutz" }];
+
   afterNavigate(() => {
     updateActiveNavItem();
   });
@@ -92,7 +94,7 @@
       </button>
       <nav>
         <ul class="text-center">
-          {#each menuItems as item}
+          {#each mobileMenuItems as item}
             <li class="mb-6">
               <a href={item.url} on:click={toggleMobileMenu} class="text-2xl hover:text-gray-300">
                 {item.name}

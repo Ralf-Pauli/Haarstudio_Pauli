@@ -7,6 +7,6 @@
   let privacyMarkdown = data.privacy;
 </script>
 
-<article class="prose prose-stone dark:prose-invert max-w-5xl mx-auto">
+<article class="prose prose-stone dark:prose-invert max-w-5xl mx-auto px-3">
   {@html marked.parse(privacyMarkdown)}
 </article>
