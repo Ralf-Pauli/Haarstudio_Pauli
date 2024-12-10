@@ -16,29 +16,17 @@
   onMount(() => {
     window.shoreBookingSettings = settings;
 
+    const existingScript = document.querySelector(
+      'script[src="https://connect.shore.com/widget/booking.js"]'
+    );
+
+    if (existingScript) {
+      existingScript.remove();
+    }
+
     const script = document.createElement("script");
-    script.src = `https://connect.shore.com/widget/booking.js?v=${Date.now()}`;
-
-    script.onload = () => {
-      widgetLoaded = true;
-      console.log("Widget successfully loaded.");
-    };
-
-    script.onerror = (event) => {
-      console.error("Widget could not be loaded. Details:", event);
-    };
-
+    script.src = "https://connect.shore.com/widget/booking.js";
+    script.async = true;
     document.body.appendChild(script);
   });
 </script>
-
-{#if widgetLoaded}
-  <div class="widget-container">
-
-  </div>
-{:else}
-  <div class="placeholder">
-
-    <p>Widget wird geladen...</p>
-  </div>
-{/if}
