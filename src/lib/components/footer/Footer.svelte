@@ -12,7 +12,7 @@
 
 <footer class="w-full pb-3 flex flex-col gap-3 sm:grid grid-cols-1 sm:grid-cols-3 mx-auto pt-4 inset-x-0 h-16 max-w-5xl sticky top-[100vh] text-sm text-center">
   <!--  TODO: use correct name -->
-  <p class="flex-shrink-0">&copy; {new Date().getFullYear()} Haarstudio Pauli</p>
+  <p class="flex-shrink-0 md:text-left">&copy; {new Date().getFullYear()} Haarstudio Pauli</p>
   <div class="mx-auto">
     {#await socialMediaPromise then socialMedia}
       {#each socialMedia as item}
