@@ -19,10 +19,11 @@
     <script>
       try {
         if (!("theme" in localStorage)) {
+          // TODO: #39 allow only dark mode as light mode isn't finished
           localStorage.theme = window.matchMedia("(prefers-color-scheme: dark)")
             .matches
             ? "dark"
-            : "light";
+            : "dark";
         }
         document.querySelector("html").classList.add(localStorage.theme);
       } catch (error) {
