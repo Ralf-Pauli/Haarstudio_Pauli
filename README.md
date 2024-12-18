@@ -1,5 +1,5 @@
 # Haarstudio Pauli
-Website project.
+Website project. 
 
 Mockup:
 https://play.teleporthq.io/projects/travel-agency-zf1to8
