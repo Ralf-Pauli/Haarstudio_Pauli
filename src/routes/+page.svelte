@@ -15,10 +15,10 @@
   // Function to update category images with full URLs
   function updateCategoryImages(categories: Array<{ image?: { url: string } }>) {
     return categories.map((category) => {
-      const imageUrl = category.image?.url;
+      const imageUrl = category.image?.formats.small.url;
 
       if (imageUrl) {
-        const fullUrl = imageUrl.startsWith("http") ? imageUrl : `${PUBLIC_STRAPI_HOST}${imageUrl}`;
+        const fullUrl = `${PUBLIC_STRAPI_HOST}${imageUrl}`;
         return { ...category, image: { ...category.image, url: fullUrl } };
       }
 
